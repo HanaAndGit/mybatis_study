@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<environments default="development">
+	<properties resource="application.properties"></properties>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	<typeAliases>
+		<package name="mybatis_study.dto"/>
+	</typeAliases>
+	<typeHandlers>
+		<package name="mybatis_study.typehandlers"/>
+	</typeHandlers>
+	<environments default="de
+	velopment">
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="mybatis_study.jdbc.HikariCPFactory" />
 		</environment>
 	</environments>
 	<mappers>
+		<package name="mybatis_study.mappers"/>
 	</mappers>
 </configuration>
