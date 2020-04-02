@@ -15,7 +15,6 @@ public class HikariCPFactory extends UnpooledDataSourceFactory {
 	private static int maxPoolSize = 100;
 
 	public HikariCPFactory() {
-		//resources에 있는 properties 파일을 Properties 로 읽어들이기
 		
 		try {
 			Properties prop = Resources.getResourceAsProperties("application.properties");

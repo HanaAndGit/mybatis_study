@@ -19,4 +19,4 @@ select stud_id as studId, name, email, dob, phone,
 		where stud_id=1;
 select STUD_ID as studID, NAME, EMAIL, PHONE, DOB from students;		
 	
-	
+desc students;

@@ -8,17 +8,30 @@ public class Student {
 	private String email;
 	private PhoneNumber phone;
 	private Date dob;
+	
+	
+	
+	public Student() {
+	}
+	public Student(int studId, String name, String email, PhoneNumber phone, Date dob) {
+		super();
+		this.studId = studId;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.dob = dob;
+	}
 	public int getStudId() {
 		return studId;
 	}
 	public void setStudId(int studId) {
 		this.studId = studId;
 	}
-	public String getNmae() {
+	public String getName() {
 		return name;
 	}
-	public void setNmae(String nmae) {
-		this.name = nmae;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getEmail() {
 		return email;
