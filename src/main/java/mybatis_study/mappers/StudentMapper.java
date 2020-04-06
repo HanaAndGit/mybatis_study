@@ -24,4 +24,6 @@ public interface StudentMapper {
 	Student selectAllStudentByMap(Map<String, String> map);
 	//ResultSet 처리 방식의 재정의
 	Map<Integer, Student> selectStudentForMap(int studId);
+	//set 조건
+	int updateSetStudent(Student student);
 }

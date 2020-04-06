@@ -1,3 +1,25 @@
 package mybatis_study.mappers;
 
-public interface CourseMapper { }
+import java.util.List;
+import java.util.Map;
+
+import mybatis_study.dto.Course;
+import mybatis_study.dto.Student;
+
+public interface CourseMapper {
+	//동적 SQL
+	List<Course> selectCoursesByCondition(Map<String, Object> map);
+	List<Course> selectCaseCourses(Map<String, Object> map);
+	List<Course> selectWhereCourses(Map<String, Object> map);
+	
+	//trim
+	List<Course> selectTrimCourses(Map<String, Object> map);
+	//forEach (select)
+	List<Course> selectCoursesForeachByTutors(Map<String, Object> map);
+	//forEach (insert)
+	int insertCourses(Map<String, Object> map);
+	//forEach(delete)
+	int deleteCourses(Map<String, Object> map);
+	
+	
+}

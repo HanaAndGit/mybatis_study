@@ -27,18 +27,21 @@ import mybatis_study.jdbc.MyBatisSqlSessionFactoryTest;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StudentMapperTest {
-	private static StudentMapper dao;
+	private static StudentMapperImpl dao;
 	private static final Log log = LogFactory.getLog(MyBatisSqlSessionFactoryTest.class);
-
+	private static SqlSession sqlSession;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		dao = StudentMapperImpl.getInstance();
+		sqlSession = MyBatisSqlSessionFactory.openSession();
+		dao.setSqlSession(sqlSession);
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		dao = null;
+		sqlSession.close();
 	}
 
 	
@@ -210,7 +213,27 @@ public class StudentMapperTest {
 		  }
 	  }
 	
-	
+
+		@Test
+		public void test14updateSetStudent() {
+			log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+			
+			Student student = new Student();
+			student.setStudId(1);
+			student.setPhone(new PhoneNumber("987-654-3211"));
+			student.setDob(new Date());
+			
+			int result = dao.updateSetStudent(student);
+			Assert.assertSame(1, result);
+			
+			student.setPhone(new PhoneNumber("123-123-1234"));
+			student.setDob(new GregorianCalendar(1988,04,25).getTime());
+			
+			result = dao.updateSetStudent(student);
+			Assert.assertSame(1, result);
+		}
+		
+		
 	
 	
 

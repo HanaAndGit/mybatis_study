@@ -21,5 +21,5 @@ select STUD_ID as studID, NAME, EMAIL, PHONE, DOB from students;
 	
 desc students;
 
-insert into students(stud_id, name , email , phone , dob, gender ) values
-(3, )
+select * from courses where name like "%java%";
+delete from courses where course_id in (5,6);
