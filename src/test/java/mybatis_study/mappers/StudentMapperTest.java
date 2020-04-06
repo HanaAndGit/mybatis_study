@@ -3,6 +3,7 @@ package mybatis_study.mappers;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -17,6 +18,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import mybatis_study.dto.Gender;
 import mybatis_study.dto.PhoneNumber;
 import mybatis_study.dto.Student;
 import mybatis_study.impl.StudentMapperImpl;
@@ -138,5 +140,78 @@ public class StudentMapperTest {
 			}
 		}
 	}
+	
+	@Test
+	public void test10selectStudentByNoAssociation() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		Student student = new Student();
+		student.setStudId(1);
+		Student selectedStd = dao.selectStudentByNoAssociation(student);
+		Assert.assertNotNull(selectedStd);
+		log.debug(selectedStd.toString());
+	}
+	
+	
+	@Test
+	public void test12InsertEnumstudent() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		
+		Calendar newDate = GregorianCalendar.getInstance();
+		newDate.set(1990,2,28);
+		Student student = new Student();
+		student.setStudId(3);
+		student.setName("test");
+		student.setEmail("test@test.co.kr");
+		student.setDob(newDate.getTime());
+		student.setPhone(new PhoneNumber("010-1234-1234"));
+		student.setGender(Gender.FEMALE);
+		int res = dao.insertEnumStudent(student);
+		Assert.assertEquals(1, res);
+		
+		student.setStudId(4);
+		student.setName("test4");
+		student.setEmail("test4@test.co.kr");
+		student.setDob(newDate.getTime());
+		student.setPhone(new PhoneNumber("010-1234-1234"));
+		student.setGender(Gender.MALE);
+		int res1 = dao.insertEnumStudent(student);
+		Assert.assertEquals(1, res1);
+		
+	}
+	
+	
+	
+	
+	  @Test public void test11selectAllStudentByMap() {
+	  log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+ "()");
+	  Map<String, String> maps = new HashMap<>();
+	   maps.put("name", "Timothy");
+	  maps.put("email", "timothy@gmail.com"); 
+	  Student student = dao.selectAllStudentByMap(maps); 
+	  Assert.assertNotNull(student);
+	  log.debug(student.toString());
+	  
+	  maps.remove("email"); 
+	  student = dao.selectAllStudentByMap(maps);
+	  log.debug(student.toString());
+	  
+	  maps.clear(); maps.put("email", "timothy@gmail.com"); 
+	  student = dao.selectAllStudentByMap(maps); 
+	  log.debug(student.toString()); 
+	 }
+	 
+	  @Test
+	  public void test13selectStudentForMap() {
+		  log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+		  Map<Integer, Student> map = dao.selectStudentForMap(1);
+		  Assert.assertNotNull(map);
+		  for(Entry<Integer,Student> entry : map.entrySet()) {
+			  System.out.printf("key(%s) - value(%s)%n", entry.getKey(), entry.getValue());
+		  }
+	  }
+	
+	
+	
+	
 
 }

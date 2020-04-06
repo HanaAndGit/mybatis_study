@@ -1,120 +1,126 @@
--- ¸¶ÀÌ¹ÙÆ¼½º¼ö¾÷
+-- ï¿½ï¿½ï¿½Ì¹ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 DROP SCHEMA IF EXISTS mybatis_study;
 
--- ¸¶ÀÌ¹ÙÆ¼½º¼ö¾÷
+-- ï¿½ï¿½ï¿½Ì¹ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE SCHEMA mybatis_study;
 
--- ÁÖ¼Ò
+-- ï¿½Ö¼ï¿½
 CREATE TABLE mybatis_study.addresses (
-	addr_id INT(11)     NOT NULL COMMENT 'ÁÖ¼ÒÄÚµå', -- ÁÖ¼ÒÄÚµå
-	street  VARCHAR(50) NOT NULL COMMENT 'µµ·Î', -- µµ·Î
-	city    VARCHAR(50) NOT NULL COMMENT '½Ã', -- ½Ã
-	state   VARCHAR(50) NOT NULL COMMENT '±¸', -- ±¸
-	zip     VARCHAR(10) NULL     COMMENT '¿ìÆí¹øÈ£', -- ¿ìÆí¹øÈ£
-	country VARCHAR(50) NOT NULL COMMENT 'À¾' -- À¾
+	addr_id INT(11)     NOT NULL COMMENT 'ï¿½Ö¼ï¿½ï¿½Úµï¿½', -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
+	street  VARCHAR(50) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½
+	city    VARCHAR(50) NOT NULL COMMENT 'ï¿½ï¿½', -- ï¿½ï¿½
+	state   VARCHAR(50) NOT NULL COMMENT 'ï¿½ï¿½', -- ï¿½ï¿½
+	zip     VARCHAR(10) NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½È£', -- ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	country VARCHAR(50) NOT NULL COMMENT 'ï¿½ï¿½' -- ï¿½ï¿½
 )
-COMMENT 'ÁÖ¼Ò';
+COMMENT 'ï¿½Ö¼ï¿½';
 
--- ÁÖ¼Ò
+-- ï¿½Ö¼ï¿½
 ALTER TABLE mybatis_study.addresses
 	ADD CONSTRAINT
 		PRIMARY KEY (
-			addr_id -- ÁÖ¼ÒÄÚµå
+			addr_id -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
 		);
 
 ALTER TABLE mybatis_study.addresses
-	MODIFY COLUMN addr_id INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ÁÖ¼ÒÄÚµå';
+	MODIFY COLUMN addr_id INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ï¿½Ö¼ï¿½ï¿½Úµï¿½';
 
 ALTER TABLE mybatis_study.addresses
 	AUTO_INCREMENT = 5;
 
--- °ú¸ñ
+-- ï¿½ï¿½ï¿½ï¿½
 CREATE TABLE mybatis_study.courses (
-	course_id   INT(11)      NOT NULL COMMENT '°ú¸ñÄÚµå', -- °ú¸ñÄÚµå
-	name        VARCHAR(100) NOT NULL COMMENT '°ú¸ñ¸í', -- °ú¸ñ¸í
-	description VARCHAR(512) NULL     COMMENT '¼³¸í', -- ¼³¸í
-	start_date  DATE         NULL     COMMENT '½ÃÀÛÀÏ', -- ½ÃÀÛÀÏ
-	end_date    DATE         NULL     COMMENT 'Á¾·áÀÏ', -- Á¾·áÀÏ
-	tutor_id    INT(11)      NOT NULL COMMENT '±³¼ö¹øÈ£' -- ±³¼ö¹øÈ£
+	course_id   INT(11)      NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½', -- ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+	name        VARCHAR(100) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½ï¿½
+	description VARCHAR(512) NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½
+	start_date  DATE         NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	end_date    DATE         NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	tutor_id    INT(11)      NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£' -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
 )
-COMMENT '°ú¸ñ';
+COMMENT 'ï¿½ï¿½ï¿½ï¿½';
 
--- °ú¸ñ
+-- ï¿½ï¿½ï¿½ï¿½
 ALTER TABLE mybatis_study.courses
 	ADD CONSTRAINT
 		PRIMARY KEY (
-			course_id -- °ú¸ñÄÚµå
+			course_id -- ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 		);
 
 ALTER TABLE mybatis_study.courses
-	MODIFY COLUMN course_id INT(11) NOT NULL AUTO_INCREMENT COMMENT '°ú¸ñÄÚµå';
+	MODIFY COLUMN course_id INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½';
 
 ALTER TABLE mybatis_study.courses
 	AUTO_INCREMENT = 4;
 
--- ¼ö°­µî·Ï
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE TABLE mybatis_study.course_enrollment (
-	course_id INT(11) NOT NULL COMMENT '°ú¸ñÄÚµå', -- °ú¸ñÄÚµå
-	stud_id   INT(11) NOT NULL COMMENT 'ÇÐ»ýÄÚµå' -- ÇÐ»ýÄÚµå
+	course_id INT(11) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½', -- ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+	stud_id   INT(11) NOT NULL COMMENT 'ï¿½Ð»ï¿½ï¿½Úµï¿½' -- ï¿½Ð»ï¿½ï¿½Úµï¿½
 )
-COMMENT '¼ö°­µî·Ï';
+COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
--- ¼ö°­µî·Ï
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ALTER TABLE mybatis_study.course_enrollment
 	ADD CONSTRAINT
 		PRIMARY KEY (
-			course_id, -- °ú¸ñÄÚµå
-			stud_id    -- ÇÐ»ýÄÚµå
+			course_id, -- ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+			stud_id    -- ï¿½Ð»ï¿½ï¿½Úµï¿½
 		);
 
--- ÇÐ»ý
+-- ï¿½Ð»ï¿½
 CREATE TABLE mybatis_study.students (
-	stud_id INT(11)     NOT NULL COMMENT 'ÇÐ»ýÄÚµå', -- ÇÐ»ýÄÚµå
-	name    VARCHAR(50) NOT NULL COMMENT 'ÀÌ¸§', -- ÀÌ¸§
-	email   VARCHAR(50) NOT NULL COMMENT 'ÀÌ¸ÞÀÏ', -- ÀÌ¸ÞÀÏ
-	phone   VARCHAR(15) NULL     COMMENT '¿¬¶ôÃ³', -- ¿¬¶ôÃ³
-	dob     DATE        NULL     COMMENT '»ýÀÏ', -- »ýÀÏ
-	bio     LONGTEXT    NULL     COMMENT 'ÀÚ±â¼Ò°³', -- ÀÚ±â¼Ò°³
-	pic     BLOB        NULL     COMMENT '»çÁø', -- »çÁø
-	addr_id INT(11)     NULL     COMMENT 'ÁÖ¼ÒÄÚµå' -- ÁÖ¼ÒÄÚµå
+	stud_id INT(11)     NOT NULL COMMENT 'ï¿½Ð»ï¿½ï¿½Úµï¿½', -- ï¿½Ð»ï¿½ï¿½Úµï¿½
+	name    VARCHAR(50) NOT NULL COMMENT 'ï¿½Ì¸ï¿½', -- ï¿½Ì¸ï¿½
+	email   VARCHAR(50) NOT NULL COMMENT 'ï¿½Ì¸ï¿½ï¿½ï¿½', -- ï¿½Ì¸ï¿½ï¿½ï¿½
+	phone   VARCHAR(15) NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½Ã³', -- ï¿½ï¿½ï¿½ï¿½Ã³
+	dob     DATE        NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½
+	bio     LONGTEXT    NULL     COMMENT 'ï¿½Ú±ï¿½Ò°ï¿½', -- ï¿½Ú±ï¿½Ò°ï¿½
+	pic     BLOB        NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½
+	addr_id INT(11)     NULL     COMMENT 'ï¿½Ö¼ï¿½ï¿½Úµï¿½' -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
 )
-COMMENT 'ÇÐ»ý';
+COMMENT 'ï¿½Ð»ï¿½';
 
--- ÇÐ»ý
+-- ï¿½Ð»ï¿½
 ALTER TABLE mybatis_study.students
 	ADD CONSTRAINT
 		PRIMARY KEY (
-			stud_id -- ÇÐ»ýÄÚµå
+			stud_id -- ï¿½Ð»ï¿½ï¿½Úµï¿½
 		);
 
 ALTER TABLE mybatis_study.students
-	MODIFY COLUMN stud_id INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ÇÐ»ýÄÚµå';
+	MODIFY COLUMN stud_id INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ï¿½Ð»ï¿½ï¿½Úµï¿½';
+
 
 ALTER TABLE mybatis_study.students
 	AUTO_INCREMENT = 4;
 
--- ±³¼ö
-CREATE TABLE mybatis_study.tutors (
-	tutor_id INT(11)     NOT NULL COMMENT '±³¼ö¹øÈ£', -- ±³¼ö¹øÈ£
-	name     VARCHAR(50) NOT NULL COMMENT 'ÀÌ¸§', -- ÀÌ¸§
-	email    VARCHAR(50) NOT NULL COMMENT 'ÀÌ¸ÞÀÏ', -- ÀÌ¸ÞÀÏ
-	phone    VARCHAR(15) NULL     COMMENT '¿¬¶ôÃ³', -- ¿¬¶ôÃ³
-	dob      DATE        NULL     COMMENT '»ýÀÏ', -- »ýÀÏ
-	bio      LONGTEXT    NULL     COMMENT 'ÀÚ±â¼Ò°³', -- ÀÚ±â¼Ò°³
-	pic      BLOB        NULL     COMMENT '»çÁø', -- »çÁø
-	addr_id  INT(11)     NULL     COMMENT 'ÁÖ¼ÒÄÚµå' -- ÁÖ¼ÒÄÚµå
-)
-COMMENT '±³¼ö';
+/* ì—´ê±°í˜• ENUM ì»¬ëŸ¼ gender ì¶”ê°€ */
 
--- ±³¼ö
+alter table mybatis_study.students add gender tinyint(1) unsigned;
+desc students;
+
+-- ï¿½ï¿½ï¿½ï¿½
+CREATE TABLE mybatis_study.tutors (
+	tutor_id INT(11)     NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£', -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	name     VARCHAR(50) NOT NULL COMMENT 'ï¿½Ì¸ï¿½', -- ï¿½Ì¸ï¿½
+	email    VARCHAR(50) NOT NULL COMMENT 'ï¿½Ì¸ï¿½ï¿½ï¿½', -- ï¿½Ì¸ï¿½ï¿½ï¿½
+	phone    VARCHAR(15) NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½Ã³', -- ï¿½ï¿½ï¿½ï¿½Ã³
+	dob      DATE        NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½
+	bio      LONGTEXT    NULL     COMMENT 'ï¿½Ú±ï¿½Ò°ï¿½', -- ï¿½Ú±ï¿½Ò°ï¿½
+	pic      BLOB        NULL     COMMENT 'ï¿½ï¿½ï¿½ï¿½', -- ï¿½ï¿½ï¿½ï¿½
+	addr_id  INT(11)     NULL     COMMENT 'ï¿½Ö¼ï¿½ï¿½Úµï¿½' -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
+)
+COMMENT 'ï¿½ï¿½ï¿½ï¿½';
+
+-- ï¿½ï¿½ï¿½ï¿½
 ALTER TABLE mybatis_study.tutors
 	ADD CONSTRAINT
 		PRIMARY KEY (
-			tutor_id -- ±³¼ö¹øÈ£
+			tutor_id -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
 		);
 
 ALTER TABLE mybatis_study.tutors
-	MODIFY COLUMN tutor_id INT(11) NOT NULL AUTO_INCREMENT COMMENT '±³¼ö¹øÈ£';
+	MODIFY COLUMN tutor_id INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£';
 
 ALTER TABLE mybatis_study.tutors
 	AUTO_INCREMENT = 5;
@@ -123,7 +129,7 @@ ALTER TABLE mybatis_study.tutors
 CREATE TABLE mybatis_study.user_pics (
 	id   INT(11)     NOT NULL COMMENT 'id', -- id
 	name VARCHAR(50) NULL     COMMENT 'name', -- name
-	pic  BLOB        NULL     COMMENT 'pic', -- pic
+	pic  LONGBLOB        NULL     COMMENT 'pic', -- pic
 	bio  LONGTEXT    NULL     COMMENT 'bio' -- bio
 )
 COMMENT 'user_pics';
@@ -141,70 +147,70 @@ ALTER TABLE mybatis_study.user_pics
 ALTER TABLE mybatis_study.user_pics
 	AUTO_INCREMENT = 37;
 
--- °ú¸ñ
+-- ï¿½ï¿½ï¿½ï¿½
 ALTER TABLE mybatis_study.courses
 	ADD CONSTRAINT FK_COURSE_TUTOR -- FK_COURSE_TUTOR
 		FOREIGN KEY (
-			tutor_id -- ±³¼ö¹øÈ£
+			tutor_id -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
 		)
-		REFERENCES mybatis_study.tutors ( -- ±³¼ö
-			tutor_id -- ±³¼ö¹øÈ£
+		REFERENCES mybatis_study.tutors ( -- ï¿½ï¿½ï¿½ï¿½
+			tutor_id -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
 		),
 	ADD INDEX FK_COURSE_TUTOR (
-		tutor_id -- ±³¼ö¹øÈ£
+		tutor_id -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
 	);
 
--- ¼ö°­µî·Ï
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ALTER TABLE mybatis_study.course_enrollment
 	ADD CONSTRAINT FK_ENROLLMENT_STUD -- FK_ENROLLMENT_STUD
 		FOREIGN KEY (
-			stud_id -- ÇÐ»ýÄÚµå
+			stud_id -- ï¿½Ð»ï¿½ï¿½Úµï¿½
 		)
-		REFERENCES mybatis_study.students ( -- ÇÐ»ý
-			stud_id -- ÇÐ»ýÄÚµå
+		REFERENCES mybatis_study.students ( -- ï¿½Ð»ï¿½
+			stud_id -- ï¿½Ð»ï¿½ï¿½Úµï¿½
 		),
 	ADD INDEX FK_ENROLLMENT_STUD (
-		stud_id -- ÇÐ»ýÄÚµå
+		stud_id -- ï¿½Ð»ï¿½ï¿½Úµï¿½
 	);
 
--- ÇÐ»ý
+-- ï¿½Ð»ï¿½
 ALTER TABLE mybatis_study.students
 	ADD CONSTRAINT FK_STUDENTS_ADDR -- FK_STUDENTS_ADDR
 		FOREIGN KEY (
-			addr_id -- ÁÖ¼ÒÄÚµå
+			addr_id -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
 		)
-		REFERENCES mybatis_study.addresses ( -- ÁÖ¼Ò
-			addr_id -- ÁÖ¼ÒÄÚµå
+		REFERENCES mybatis_study.addresses ( -- ï¿½Ö¼ï¿½
+			addr_id -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
 		),
 	ADD INDEX FK_STUDENTS_ADDR (
-		addr_id -- ÁÖ¼ÒÄÚµå
+		addr_id -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
 	);
 
--- ±³¼ö
+-- ï¿½ï¿½ï¿½ï¿½
 ALTER TABLE mybatis_study.tutors
 	ADD CONSTRAINT FK_TUTORS_ADDR -- FK_TUTORS_ADDR
 		FOREIGN KEY (
-			addr_id -- ÁÖ¼ÒÄÚµå
+			addr_id -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
 		)
-		REFERENCES mybatis_study.addresses ( -- ÁÖ¼Ò
-			addr_id -- ÁÖ¼ÒÄÚµå
+		REFERENCES mybatis_study.addresses ( -- ï¿½Ö¼ï¿½
+			addr_id -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
 		),
 	ADD INDEX FK_TUTORS_ADDR (
-		addr_id -- ÁÖ¼ÒÄÚµå
+		addr_id -- ï¿½Ö¼ï¿½ï¿½Úµï¿½
 	);
 
--- ¼ö°­µî·Ï
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ALTER TABLE mybatis_study.course_enrollment
 	ADD CONSTRAINT FK_ENROLLMENT_COURSE -- FK_ENROLLMENT_COURSE
 		FOREIGN KEY (
-			course_id -- °ú¸ñÄÚµå
+			course_id -- ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 		)
-		REFERENCES mybatis_study.courses ( -- °ú¸ñ
-			course_id -- °ú¸ñÄÚµå
+		REFERENCES mybatis_study.courses ( -- ï¿½ï¿½ï¿½ï¿½
+			course_id -- ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 		);
-		
 	
--- user_mybatis_study localhost, % °èÁ¤ Ãß°¡
+	
+-- user_mybatis_study localhost, % ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 drop user if exists 'user_mybatis_study'@'localhost';
 drop user if exists 'user_mybatis_study'@'%';
 

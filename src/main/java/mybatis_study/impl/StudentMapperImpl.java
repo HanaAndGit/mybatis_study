@@ -1,8 +1,11 @@
 package mybatis_study.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.ResultContext;
+import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis_study.dto.Student;
@@ -83,6 +86,46 @@ public class StudentMapperImpl implements StudentMapper {
 		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
 			return sqlSession.selectList(namesapce + ".selectStudentByAllForHashMap");
 		}
+	}
+
+	@Override
+	public Student selectStudentByNoAssociation(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+			return sqlSession.selectOne(namesapce + ".selectStudentByNoAssociation" , student); 
+		}
+	}
+
+	@Override
+	public int insertEnumStudent(Student student) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+			int res = sqlSession.insert(namesapce + ".insertEnumStudent", student);
+			return res;
+		}
+	}
+
+	@Override
+	public Student selectAllStudentByMap(Map<String, String> map) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+			return sqlSession.selectOne(namesapce + ".selectAllStudentByMap", map);
+		}
+	}
+
+	@Override
+	public Map<Integer, Student> selectStudentForMap(int studId) {
+		Map<Integer, Student> map = new HashMap<Integer, Student>();
+		ResultHandler<Student> resultHandler = new ResultHandler<Student>() {
+
+			@Override
+			public void handleResult(ResultContext<? extends Student> resultContext) {
+				Student student = resultContext.getResultObject();
+				map.put(student.getStudId(), student);
+				
+			}
+		};
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+			sqlSession.select(namesapce + ".selectStudentForMap", studId, resultHandler);
+		}
+		return map;
 	}
 
 }

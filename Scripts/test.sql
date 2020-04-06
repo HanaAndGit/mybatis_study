@@ -20,3 +20,6 @@ select stud_id as studId, name, email, dob, phone,
 select STUD_ID as studID, NAME, EMAIL, PHONE, DOB from students;		
 	
 desc students;
+
+insert into students(stud_id, name , email , phone , dob, gender ) values
+(3, )

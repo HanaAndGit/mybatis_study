@@ -8,19 +8,9 @@ public class Student {
 	private String email;
 	private PhoneNumber phone;
 	private Date dob;
+	private Address address;
+	private Gender gender; 
 	
-	
-	
-	public Student() {
-	}
-	public Student(int studId, String name, String email, PhoneNumber phone, Date dob) {
-		super();
-		this.studId = studId;
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.dob = dob;
-	}
 	public int getStudId() {
 		return studId;
 	}
@@ -51,11 +41,28 @@ public class Student {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	
+	public Gender getGender() {
+		return gender;
+	}
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
 	@Override
 	public String toString() {
-		return String.format("[%s, %s, %s, %s, %s]", studId, name, email, phone, dob);
+		return String.format("Student [%s, %s, %s, %s, %s, %s, %s]", studId,
+				name, email, phone, dob, address, gender==Gender.FEMALE?"여자":"남자");
 	}
+	
+	
+	
+
 	
 	
 }
