@@ -17,8 +17,7 @@ import org.junit.runners.MethodSorters;
 
 import mybatis_study.AbstractTest;
 import mybatis_study.dto.Course;
-import mybatis_study.dto.PhoneNumber;
-import mybatis_study.dto.Student;
+import mybatis_study.dto.CourseStat;
 import mybatis_study.impl.CourseMapperImpl;
 import mybatis_study.jdbc.MyBatisSqlSessionFactory;
 
@@ -30,7 +29,7 @@ public class CourseMapperTest extends AbstractTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		dao = CourseMapperImpl.getInstance();
-		sqlSession = MyBatisSqlSessionFactory.openSession();
+		sqlSession = MyBatisSqlSessionFactory.openSession(true);
 		dao.setSqlSession(sqlSession);
 	}
 
@@ -246,7 +245,31 @@ public class CourseMapperTest extends AbstractTest {
 		Assert.assertEquals(3, res);
 	}
 	
+	@Test
+	public void test10getCourseCountByTutor() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+ "()");
+		Map<String, Object> param = new HashMap<>();
+		param.put("tutor_id", 1);
+		Map<String, Object> map= dao.getCourseCountByTutor(param);
+		Assert.assertNotEquals(0, map.size());
+	}
 	
+	@Test
+	public void test11getCourseCountByTutor2() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+ "()");
+		Map<String, Object> param = new HashMap<>();
+		param.put("tutor_id", 1);
+		Map<String, Object> map = dao.getCourseCountByTutor2(param);
+		Assert.assertNotEquals(0, map.size());
+	}
+	
+	@Test
+	public void test12getCourseCountByTutor3() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+ "()");
+		CourseStat stat = dao.getCourseCountByTutor3(1);
+		Assert.assertNotNull(stat);
+		
+	}
 	
 	
 	

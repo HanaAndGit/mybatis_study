@@ -34,7 +34,7 @@ public class StudentMapperTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		dao = StudentMapperImpl.getInstance();
-		sqlSession = MyBatisSqlSessionFactory.openSession();
+		sqlSession = MyBatisSqlSessionFactory.openSession(true);
 		dao.setSqlSession(sqlSession);
 	}
 
@@ -109,7 +109,7 @@ public class StudentMapperTest {
 		student.setEmail("test@test.co.kr");
 		student.setPhone(new PhoneNumber("987-654-3211"));
 		student.setDob(new Date());
-		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession(true);
 		int result = dao.updateStudent(sqlSession, student);
 		
 		

@@ -1,6 +1,7 @@
 package mybatis_study.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -28,6 +29,24 @@ public class TutorMapperImpl implements TutorMapper {
 	@Override
 	public Tutor selectTutorByTutorId(Tutor tutor) {
 		return sqlSession.selectOne(namespace + ".selectTutorByTutorId", tutor);
+	}
+
+	@Override
+	public int insertTutors(Map<String, Object> map) {
+		int res = sqlSession.insert(namespace + ".insertTutors", map);
+		return res;
+	}
+
+	@Override
+	public int insertTutor(Tutor tutor) {
+		int res = sqlSession.insert(namespace + ".insertTutor", tutor);
+		return res;
+	}
+
+	@Override
+	public int deleteTutor(int tutor_id) {
+		int res = sqlSession.delete(namespace + ".deleteTutor", tutor_id);
+		return res;
 	}
 
 }

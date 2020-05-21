@@ -13,4 +13,16 @@
 		from tutors t left join courses c on t.tutor_id = c.tutor_id
 		where t.tutor_id=#{tutorId}
 	</select>
+	
+	<insert id="insertTutor" parameterType="Tutor">
+		insert into tutors(tutor_id, name, email) values
+			(#{tutorId}, #{name}, #{email})
+	</insert>
+	
+	<delete id="deleteTutor" parameterType="int">
+		delete from tutors
+		<where>
+			tutor_id = #{tutorId}
+		</where>
+	</delete>
 </mapper>

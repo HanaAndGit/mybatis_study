@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import mybatis_study.dto.Course;
-import mybatis_study.dto.Student;
+import mybatis_study.dto.CourseStat;
 
 public interface CourseMapper {
 	//동적 SQL
@@ -20,6 +20,14 @@ public interface CourseMapper {
 	int insertCourses(Map<String, Object> map);
 	//forEach(delete)
 	int deleteCourses(Map<String, Object> map);
+	//CourseUiService (Transaction)
+	int insertCourse(Course course);
+	int deleteCourse(int course_id);
+	//Procedure
+	Map<String, Object> getCourseCountByTutor(Map<String, Object> param);
+	Map<String, Object> getCourseCountByTutor2(Map<String, Object> param);
+	CourseStat getCourseCountByTutor3(int param);
+
 	
 	
 }

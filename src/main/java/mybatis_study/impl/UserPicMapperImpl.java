@@ -25,7 +25,7 @@ public class UserPicMapperImpl implements UserPicMapper {
 
 	@Override
 	public int insertUserPic(UserPic userPic) {
-		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession(true);){
 			int res = sqlSession.insert(namespace + ".insertUserPic", userPic);
 			return res;
 		}
@@ -33,7 +33,7 @@ public class UserPicMapperImpl implements UserPicMapper {
 
 	@Override
 	public UserPic getUserPic(int id) {
-		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession()){
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession(true)){
 			return sqlSession.selectOne(namespace + ".getUserPic", id);
 		}
 	}
